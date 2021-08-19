@@ -38,5 +38,5 @@ jobs:
         run: bundle exec fastlane pullRequestCheck
 
       - name: Deploy to Test Flight
-        if: ${{ github.event.label.name == 'Build' }}
+        if: contains(github.event.pull_request.labels.*.name, 'Build')
         run: echo "Simulating test flight deployment..."
