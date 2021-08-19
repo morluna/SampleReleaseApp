@@ -12,4 +12,5 @@ enum PullRequestChanges {
     case two
     case three
     case four
+    case five
 }
