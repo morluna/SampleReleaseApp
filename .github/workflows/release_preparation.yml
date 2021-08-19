@@ -34,14 +34,10 @@ jobs:
       - name: Deploy to Test Flight PROD
         run: echo "Simulating test flight deployment to app store connect..."
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with: 
-          branch: "automated-mergeback"
-          branch-suffix: "timestamp"
-          title: "Automated - Mergeback"
-          body: "This is an automated branch. Check out and resolve any conflicts if needed."
-          labels: "Automated"
-          delete-branch: true
-          base: "develop"
+      - uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'develop'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
 
