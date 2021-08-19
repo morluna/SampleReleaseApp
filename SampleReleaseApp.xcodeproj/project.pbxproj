@@ -19,6 +19,7 @@
 		F04E371426CEB810000885AB /* SampleReleaseAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E371326CEB810000885AB /* SampleReleaseAppTests.swift */; };
 		F04E371F26CEB810000885AB /* SampleReleaseAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E371E26CEB810000885AB /* SampleReleaseAppUITests.swift */; };
 		F04E372E26CEBAA8000885AB /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = F04E372D26CEBAA8000885AB /* ColorKit */; };
+		F04E373026CEC013000885AB /* PullRequestChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04E372F26CEC013000885AB /* PullRequestChanges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		F04E371A26CEB810000885AB /* SampleReleaseAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleReleaseAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F04E371E26CEB810000885AB /* SampleReleaseAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleReleaseAppUITests.swift; sourceTree = "<group>"; };
 		F04E372026CEB810000885AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F04E372F26CEC013000885AB /* PullRequestChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestChanges.swift; sourceTree = "<group>"; };
 		FBC4EE6BA7380F49C225CEAD /* Pods-SampleReleaseAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleReleaseAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SampleReleaseAppTests/Pods-SampleReleaseAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 				F04E36FC26CEB80F000885AB /* AppDelegate.swift */,
 				F04E36FE26CEB80F000885AB /* SceneDelegate.swift */,
 				F04E370026CEB80F000885AB /* ViewController.swift */,
+				F04E372F26CEC013000885AB /* PullRequestChanges.swift */,
 				F04E370226CEB80F000885AB /* Main.storyboard */,
 				F04E370526CEB810000885AB /* Assets.xcassets */,
 				F04E370726CEB810000885AB /* LaunchScreen.storyboard */,
@@ -416,6 +419,7 @@
 			files = (
 				F04E370126CEB80F000885AB /* ViewController.swift in Sources */,
 				F04E36FD26CEB80F000885AB /* AppDelegate.swift in Sources */,
+				F04E373026CEC013000885AB /* PullRequestChanges.swift in Sources */,
 				F04E36FF26CEB80F000885AB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
