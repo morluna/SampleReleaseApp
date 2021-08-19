@@ -8,6 +8,7 @@ env:
 
 jobs:
   buildTest:
+    if: ${{ github.event.label.name != 'Build' }}
     runs-on: macos-11
 
     steps:
