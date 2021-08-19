@@ -36,12 +36,12 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
-          with: 
-            branch: "automated-mergeback"
-            branch-suffix: "timestamp"
-            title: "Automated - Mergeback"
-            body: "This is an automated branch. Check out and resolve any conflicts if needed."
-            labels: "Automated"
-            delete-branch: true
-            base: "develop"
+        with: 
+          branch: "automated-mergeback"
+          branch-suffix: "timestamp"
+          title: "Automated - Mergeback"
+          body: "This is an automated branch. Check out and resolve any conflicts if needed."
+          labels: "Automated"
+          delete-branch: true
+          base: "develop"
 
