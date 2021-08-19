@@ -22,13 +22,10 @@ platform :ios do
     # sh("gem install bundler:2.2.11")
 
     # Install gem dependencies
-    bundle_install
+    # bundle_install
 
     # Install cocoapods
-    cocoapods(
-      repo_update: true,
-      use_bundle_exec: true
-    )
+    cocoapods(repo_update: true)
 
     # Build and run tests
     scan
