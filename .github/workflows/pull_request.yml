@@ -1,18 +1,23 @@
-name: Build and run local unit tests
+name: Build, Test, Testflight DEV
 
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   pull_request:
-    branches-ignore:
-      - develop
-      - release-*.*.*
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
 
 jobs:
+  clearPreviousRuns:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
   buildTest:
+    needs: clearPreviousRuns
+
     runs-on: macos-11
 
     steps:
@@ -30,3 +35,7 @@ jobs:
       
       - name: Build and run unit tests
         run: bundle exec fastlane pullRequestCheck
+
+      - name: Deploy to Test Flight
+        if: ${{ github.event.label.name == 'Build' }}
+        run: echo "Simulating test flight deployment..."
