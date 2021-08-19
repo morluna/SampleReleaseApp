@@ -1,0 +1,3 @@
+enum HotfixChanges {
+    case one
+}
