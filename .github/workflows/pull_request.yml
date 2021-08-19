@@ -1,12 +1,7 @@
 name: Build and run local unit tests
 
-# Controls when the workflow will run
 on:
-  # Allows you to run this workflow manually from the Actions tab
   pull_request:
-    branches-ignore:
-      - develop
-      - release-*.*.*
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
