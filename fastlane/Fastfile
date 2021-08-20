@@ -24,4 +24,11 @@ platform :ios do
     # Build and run tests
     scan
   end
+
+  desc "Update version to value"
+  lane: updateVersion do |options|
+    increment_version_number(
+      version_number: options[:version] # Set a specific version number
+    )
+  end
 end
