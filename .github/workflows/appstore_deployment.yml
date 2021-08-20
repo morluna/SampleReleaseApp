@@ -88,3 +88,6 @@ jobs:
           source_ref: 'automated-${{ github.event.inputs.nextVersion }}-version-bump'
           target_branch: 'develop'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+
+      - name: Delete Version Bump Branch
+        run: git push origin --delete automated-${{ github.event.inputs.nextVersion }}-version-bump
