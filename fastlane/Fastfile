@@ -26,7 +26,7 @@ platform :ios do
   end
 
   desc "Update version to value"
-  lane: updateVersion do |options|
+  lane :updateVersion do |options|
     increment_version_number(
       version_number: options[:version] # Set a specific version number
     )
