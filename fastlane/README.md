@@ -21,6 +21,11 @@ or alternatively using `brew install fastlane`
 fastlane ios pullRequestCheck
 ```
 Description of what the lane does
+### ios updateVersion
+```
+fastlane ios updateVersion
+```
+Update version to value
 
 ----
 
