@@ -63,15 +63,23 @@ jobs:
         with:
           ref: 'develop'
 
-      - name: Create Version Bump 
-        run: bundle exec fastlane updateVersion version:${{ github.event.inputs.nextVersion }}
-
       - name: Create Version Bump Branch
         uses: peterjgrainger/action-create-branch@v2.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: 'automated-${{ github.event.inputs.nextVersion }}-version-bump'
+
+      - name: Checkout Version Bump Branch
+        uses: actions/checkout@v2
+        with:
+          ref: 'automated-${{ github.event.inputs.nextVersion }}-version-bump'
+
+      - name: Create Version Bump 
+        run: |
+          bundle exec fastlane updateVersion version:${{ github.event.inputs.nextVersion }}
+          git commit -am "Updated version"
+          git push
 
       - name: Merge Version Bump Branch
         uses: everlytic/branch-merge@1.1.2
