@@ -1,0 +1,38 @@
+name: Release Drafter
+
+on:
+  push:
+    # branches to consider in the event; optional, defaults to all
+    branches:
+      - develop
+
+jobs:
+  update_draft_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: toolmantim/release-drafter@v5.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          categories:
+            - title: '🌱 Growth Pod'
+              labels:
+                - 'Growth'
+            - title: '💳 Credit Card Pod'
+              labels:
+                - 'Credit Card'
+            - title: '🛍 Spend Pod'
+              labels:
+                - 'Spend'
+            - title: '🛠 Platform Pod'
+              labels:
+                -  'Platform'
+            - title: '📈 Invest/Borrow Pod'
+              labels:
+                - 'Invest'
+                - 'Borrow'
+            - title: 'Tech Debt/CI Improvements'
+              labels:
+                - 'Tech Debt'
+
+          template: $CHANGES
