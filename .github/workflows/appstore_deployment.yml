@@ -64,7 +64,7 @@ jobs:
           ref: 'develop'
 
       - name: Create Version Bump 
-        run: bundle exec fastlane fastlane updateVersion version:${{ github.event.inputs.nextVersion }}
+        run: bundle exec fastlane updateVersion version:${{ github.event.inputs.nextVersion }}
 
       - name: Create Version Bump Branch
         uses: peterjgrainger/action-create-branch@v2.0.1
