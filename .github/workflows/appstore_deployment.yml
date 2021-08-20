@@ -58,17 +58,17 @@ jobs:
           draft: true
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            # 🌱 Growth Pod
+            ### 🌱 Growth Pod
 
-            # 💳 Credit Card Pod
+            ### 💳 Credit Card Pod
 
-            # 🛍 Spend Pod
+            ### 🛍 Spend Pod
 
-            # 🛠 Platform Pod
+            ### 🛠 Platform Pod
 
-            # 📈 Invest/Borrow Pod
+            ### 📈 Invest/Borrow Pod
 
-            # ⚙️ Tech Debt/CI Improvements
+            ### ⚙️ Tech Debt/CI Improvements
 
             Milestone with PR Links: https://github.com/m1finance/ios/milestones
 
