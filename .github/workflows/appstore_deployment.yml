@@ -50,27 +50,27 @@ jobs:
           echo "Simulating deploying to app store..."
           echo "Setting release to ${{ github.event.inputs.releaseType }}"
 
-      - name: Create release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: v${{ steps.extract_branch.outputs.branch }}
-          name: Release v${{ steps.extract_branch.outputs.branch }}
-          draft: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            ### 🌱 Growth Pod
+      # - name: Create release
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     tag: v${{ steps.extract_branch.outputs.branch }}
+      #     name: Release v${{ steps.extract_branch.outputs.branch }}
+      #     draft: true
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     body: |
+      #       ### 🌱 Growth Pod
 
-            ### 💳 Credit Card Pod
+      #       ### 💳 Credit Card Pod
 
-            ### 🛍 Spend Pod
+      #       ### 🛍 Spend Pod
 
-            ### 🛠 Platform Pod
+      #       ### 🛠 Platform Pod
 
-            ### 📈 Invest/Borrow Pod
+      #       ### 📈 Invest/Borrow Pod
 
-            ### ⚙️ Tech Debt/CI Improvements
+      #       ### ⚙️ Tech Debt/CI Improvements
 
-            Milestone with PR Links: https://github.com/m1finance/ios/milestones
+      #       Milestone with PR Links: https://github.com/m1finance/ios/milestones
 
       - name: Checkout Develop
         uses: actions/checkout@v2
