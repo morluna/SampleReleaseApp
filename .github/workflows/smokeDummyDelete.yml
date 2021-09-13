@@ -30,9 +30,14 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
+        
+      - name: Set the variables
+        env:
+          DEFAULT_TEST_PLAN: 'UISmoke' # here is the default message
+        run: echo "TEST_PLAN=${{ github.event.inputs.testPlanToUse || env.DEFAULT_TEST_PLAN }}" >> $GITHUB_ENV
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
-          echo ${{ github.event.inputs.testPlanToUse }}
+          echo $TEST_PLAN
