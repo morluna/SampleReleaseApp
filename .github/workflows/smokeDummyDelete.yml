@@ -6,7 +6,7 @@ on:
   schedule:
     # At 05:00 on every day-of-week from Monday through Friday.
     # 5 AM UTC -> 12 AM (midnight) CST
-    - cron:  '38 5 * * *'
+    - cron:  '42 17 * * *'
 
   workflow_dispatch:
     inputs:
