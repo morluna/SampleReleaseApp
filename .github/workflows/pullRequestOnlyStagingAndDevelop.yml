@@ -18,7 +18,7 @@ jobs:
       id: extract_branch
       
     - name: Print branch name
-      run: echo ${{ github.ref }}
+      run: echo ${{ github.base_ref }}
       
     - name: PUSH TESTFLIGHT PROD
       if: ${{ github.ref == 'refs/heads/release' }}
