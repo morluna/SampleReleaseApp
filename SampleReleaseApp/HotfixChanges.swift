@@ -7,4 +7,5 @@ enum HotfixChanges {
     case six
     case seven
     case eight
+    case nine
 }
