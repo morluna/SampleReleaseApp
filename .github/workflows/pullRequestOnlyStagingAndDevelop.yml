@@ -1,0 +1,22 @@
+name: Pull Request STAGING/RELEASE
+
+on:
+  pull_request:
+    branches: 
+      - staging
+      - release
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Extract branch name
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+      
+    - name: PUSH TESTFLIGHT PROD
+      if: ${{ github.ref == 'refs/heads/release' }}
+      run: echo "PUSHING TESTFLIGHT PRO"
