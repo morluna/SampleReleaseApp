@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize, reopened, labeled, unlabeled]
     branches-ignore: 
       - staging
+      - release
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
