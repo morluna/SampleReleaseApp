@@ -1,4 +1,4 @@
-name: Build, Test, Testflight DEV
+name: Pull Request Check
 
 on:
   pull_request:
@@ -37,7 +37,3 @@ jobs:
       - name: Build and run unit tests
         # run: bundle exec fastlane pullRequestCheck
         run: echo "Simulating building and running tests..."
-
-      - name: Deploy to Test Flight
-        if: contains(github.event.pull_request.labels.*.name, 'Build')
-        run: echo "Simulating test flight deployment..."
