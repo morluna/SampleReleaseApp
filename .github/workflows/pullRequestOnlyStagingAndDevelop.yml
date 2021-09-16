@@ -17,6 +17,9 @@ jobs:
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
       
+    - name: Print branch name
+      run: echo ${{ github.ref }}
+      
     - name: PUSH TESTFLIGHT PROD
       if: ${{ github.ref == 'refs/heads/release' }}
       run: echo "PUSHING TESTFLIGHT PRO"
