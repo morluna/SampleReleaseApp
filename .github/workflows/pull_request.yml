@@ -3,6 +3,8 @@ name: Build, Test, Testflight DEV
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled, unlabeled]
+    branches: 
+      - 'staging'
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
