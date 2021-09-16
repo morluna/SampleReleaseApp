@@ -2,8 +2,7 @@ name: Build, Test, Testflight DEV
 
 on:
   pull_request:
-    branches-ignore: 
-      - release
+    branches-ignore: [ release ]
 
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
