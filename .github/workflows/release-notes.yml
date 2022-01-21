@@ -14,6 +14,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: temp_release_notes
+        
+    - uses: ncipollo/release-action@v1
+      with:
+        draft: true
+        name: $(/JSON.sh < "${GITHUB_EVENT_PATH}" | grep '\["milestone","title"]' | cut -f2 | sed 's/\"//g' | sed 's/ /_/g')
+        bodyFile: temp_release_notes/release_file.md
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - uses: actions/upload-artifact@v2
       with:
         path: temp_release_notes/release_file.md
