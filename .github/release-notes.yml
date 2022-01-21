@@ -15,4 +15,4 @@ changelog:
   - title: '📈 Invest/Borrow Pod'
     labels: ['Invest', 'Borrow']
   - title: 'Tech Debt/CI Improvements'
-     labels: ['Tech Debt']
+    labels: ['Tech Debt']
