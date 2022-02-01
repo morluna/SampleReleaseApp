@@ -15,15 +15,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Bundler Install
-        run: gem install bundler:2.2.11
-      
-      - name: Bundle Install
-        run: bundle install
-
-      - name: Install Cocoapods
-        run: bundle exec pod install --repo-update
       
       - name: Build and run unit tests
         # run: bundle exec fastlane pullRequestCheck
@@ -35,10 +26,6 @@ jobs:
       - name: Deploy to Test Flight PROD
         run: echo "Simulating test flight deployment to app store connect..."
 
-      - uses: everlytic/branch-merge@1.1.2
-        with:
-          github_token: ${{ github.token }}
-          source_ref: ${{ github.ref }}
-          target_branch: 'develop'
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+      - name: Print ref
+        run: echo ${{ github.ref }}
 
