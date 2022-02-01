@@ -31,4 +31,9 @@ platform :ios do
       version_number: options[:version] # Set a specific version number
     )
   end
+  
+  desc "Release"
+  lane :release do
+    ensure_git_branch(branch: 'release-*.*.*')
+  end
 end
