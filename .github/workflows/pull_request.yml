@@ -37,3 +37,7 @@ jobs:
       - name: Build and run unit tests
         # run: bundle exec fastlane pullRequestCheck
         run: echo "Simulating building and running tests..."
+      
+      - name: Print ref
+        if: ${{ startsWith(github.ref, 'refs/heads/release-') }}
+        run: echo "This is true"
