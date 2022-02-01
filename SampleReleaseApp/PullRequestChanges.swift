@@ -23,4 +23,5 @@ enum PullRequestChanges {
     case thirteen
     case fourteen
     case fifteen
+    case sixteen
 }
