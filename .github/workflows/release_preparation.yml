@@ -27,5 +27,6 @@ jobs:
         run: echo "Simulating test flight deployment to app store connect..."
 
       - name: Print ref
+        if: ${{ startsWith(github.ref, 'refs/heads/release-') }}
         run: echo ${{ github.ref }}
 
