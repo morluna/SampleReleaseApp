@@ -2,6 +2,10 @@ name: Build, Testflight DEV, Testflight PROD
 
 on:
   workflow_dispatch:
+    inputs:
+      updatedReleaseNotes:
+          description: 'Release notes to use for submission. If empty, will use `fastlane/metadata/default/release_notes.txt`'
+          required: false
   
   push:
     branches:
@@ -28,10 +32,10 @@ jobs:
       - name: Deploy to Test Flight PROD
         run: echo "Simulating test flight deployment to app store connect..."
 
-      - name: Print ref
-        if: ${{ startsWith(github.ref, 'refs/heads/release-') }}
-        run: echo ${{ github.ref }}
+      - name: Update Release Notes If Needed
+        if: ${{ github.event.inputs.updatedReleaseNotes }}
+        run: echo ${{ github.event.inputs.updatedReleaseNotes }} > fastlane/metadata/default/release_notes.txt
         
-      - name: Test ensure branch
-        run: fastlane release
-
+      - name: Print release notes
+        run: cat fastlane/metadata/default/release_notes.txt
+        
