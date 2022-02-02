@@ -5,6 +5,11 @@ name: CI
 # Controls when the workflow will run
 on:
   workflow_dispatch:
+    inputs:
+      automaticRelease:
+          description: 'Automatic Release'
+          required: false
+          default: 'true'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,3 +29,6 @@ jobs:
       
       - name: Echo Run Number
         run: echo ${{ github.run_number }}
+        
+      - name: Echo Inputs
+        run: ${{ github.event.inputs.buildNumber }}
