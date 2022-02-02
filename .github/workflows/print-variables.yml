@@ -20,6 +20,10 @@ on:
           options:
           - 'true'
           - 'false'
+          
+      newReleaseNotes:
+        description: 'Release notes to use for submission. If empty, will use `fastlane/metadata/default/release_notes.txt`'
+        required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -39,6 +43,10 @@ jobs:
       
       - name: Echo Run Number
         run: echo ${{ github.run_number }}
+        
+      - name: Update Release Notes if Needed
+        if: ${{ github.event.inputs.newReleaseNotes }}
+        run: echo ${{ github.event.inputs.newReleaseNotes }} 
         
       - name: Echo Inputs
         run: |
