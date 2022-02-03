@@ -56,5 +56,5 @@ jobs:
         
       - name: Echo Inputs
         run: |
-         Automatic Release: ${{ github.event.inputs.automaticRelease }}
-         Phased Release: ${{ github.event.inputs.phasedRelease }}
+         echo "Automatic Release: ${{ github.event.inputs.automaticRelease }}"
+         echo "Phased Release: ${{ github.event.inputs.phasedRelease }}"
