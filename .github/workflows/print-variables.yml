@@ -58,3 +58,4 @@ jobs:
         run: |
          echo "Automatic Release: ${{ github.event.inputs.automaticRelease }}"
          echo "Phased Release: ${{ github.event.inputs.phasedRelease }}"
+         echo ${{ github.ref }}
