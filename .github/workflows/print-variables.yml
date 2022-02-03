@@ -21,7 +21,7 @@ jobs:
     # 2. If a pull request was opened to merge into `release` (AKA Release Candidate)
     # 3. If a push occured on a `release-*.*.*` branch
     # 4. If a pull request has a 'Build DEV to TestFlight' label either when it was opened OR when it was added by the developer.
-    if: ${{ github.event_name == 'workflow_dispatch' || github.base_ref == 'release' || startsWith(github.ref, 'release-') || github.event.label.name == 'Build DEV to TestFlight' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.base_ref == 'release' || contains(github.ref, 'release-') || github.event.label.name == 'Build DEV to TestFlight' }}
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
