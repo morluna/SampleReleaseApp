@@ -20,11 +20,11 @@ jobs:
     steps:
       - name: Update Version from Workflow Dispatch
         if: ${{ github.event.inputs.version }}
-        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.version }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.version }};/' SampleReleaseApp.xcodeproj/project.pbxproj
         
       - name: Update Version from Repository Dispatch
         if: ${{ github.event.client_payload.message.nextVersionNumber }}
-        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.client_payload.message.nextVersionNumber }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.client_payload.message.nextVersionNumber }};/' SampleReleaseApp.xcodeproj/project.pbxproj
       
       # Create a pull request
       - name: Create Pull Request
