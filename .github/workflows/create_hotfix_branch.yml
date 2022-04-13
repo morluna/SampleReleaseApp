@@ -1,0 +1,63 @@
+name: Create Hotfix Branch
+
+on: 
+  workflow_dispatch:
+    inputs:
+      previousVersion:
+        description: 'Previous version number (ex. 2022.2.3)'
+        required: true
+      hotfixVersion:
+        description: 'New hotfix version number (ex. v2022.2.4)'
+        required: true
+      nextVersion:
+        description: 'The next version number (ex. v2022.3.1)'
+        required: true
+      commitHash:
+        description: 'The commit hash with the fix. Usually provided by the developer who fixed the issue.'
+        required: true
+env:
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+
+jobs:
+  createBranchVersionAndApplyFix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Check if user has Admin access"
+        uses: "lannonbr/repo-permission-check-action@2.0.0"
+        with:
+          permission: "admin"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Checkout iOS repository
+        uses: actions/checkout@v2
+
+      - name: Create hotfix branch
+        run: git checkout tags/v${{ github.event.inputs.previousVersion }} -b release-${{ github.event.inputs.hotfixVersion }}
+
+      - name: Update version
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' client.xcodeproj/project.pbxproj 
+      
+      - name: Cherry pick commit
+        run: git cherry-pick ${{ github.event.inputs.commitHash }} release-${{ github.event.inputs.hotfixVersion }}
+      
+      - name: Commit changes
+        run: git commit -am "Updated version to ${{ github.event.inputs.hotfixVersion }} and cherry picked fix ${{ github.event.inputs.commitHash }}" 
+            
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
+          
+      - name: Trigger version bump on develop
+        uses: mvasigh/dispatch-action@main
+        with:
+          token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
+          owner: morluna
+          event_type: sample_project_hotfix_version_bump
+          message: |
+            {
+              "nextVersionNumber": ${{ github.event.inputs.nextVersion }}
+            }
