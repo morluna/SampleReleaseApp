@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create hotfix branch
-        run: git checkout tags/v${{ github.event.inputs.previousVersion }} -b release-${{ github.event.inputs.hotfixVersion }}
+        run: git checkout -b tags/v${{ github.event.inputs.previousVersion }} release-${{ github.event.inputs.hotfixVersion }}
 
       - name: Update version
         run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' client.xcodeproj/project.pbxproj 
