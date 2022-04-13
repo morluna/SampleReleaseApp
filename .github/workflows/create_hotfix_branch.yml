@@ -34,10 +34,10 @@ jobs:
       - name: Checkout iOS repository
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: v${{ github.event.inputs.previousVersion }}
 
       - name: Create hotfix branch
-        run: git checkout -b release-${{ github.event.inputs.hotfixVersion }} v${{ github.event.inputs.previousVersion }}
+        run: git checkout -b release-${{ github.event.inputs.hotfixVersion }}
 
       - name: Update version
         run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
