@@ -2,7 +2,7 @@ name: Version Bump
 
 on: 
   repository_dispatch:
-    types: [hotfix_version_bump]
+    types: [sample_project_hotfix_version_bump]
     
   workflow_dispatch:
     inputs:
