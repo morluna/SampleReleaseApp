@@ -59,9 +59,8 @@ jobs:
         uses: mvasigh/dispatch-action@main
         with:
           token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
-          owner: morluna
           event_type: sample_project_hotfix_version_bump
           message: |
             {
-              "nextVersionNumber": ${{ github.event.inputs.nextVersion }}
+              "nextVersionNumber": '${{ github.event.inputs.nextVersion }}'
             }
