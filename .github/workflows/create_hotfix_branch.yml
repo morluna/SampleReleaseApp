@@ -50,9 +50,7 @@ jobs:
         run: git commit -am "Updated version to ${{ github.event.inputs.hotfixVersion }} and cherry picked fix ${{ github.event.inputs.commitHash }}" 
             
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
+        run: git push --set-upstream origin release-${{ github.event.inputs.hotfixVersion }}
           
       - name: Trigger version bump on develop
         uses: mvasigh/dispatch-action@main
