@@ -21,7 +21,7 @@ env:
 
 jobs:
   createBranchVersionAndApplyFix:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: "Check if user has Admin access"
@@ -33,6 +33,8 @@ jobs:
           
       - name: Checkout iOS repository
         uses: actions/checkout@v3
+        with:
+          ref: v${{ github.event.inputs.previousVersion }}
 
       - name: Create hotfix branch
         run: git checkout -b release-${{ github.event.inputs.hotfixVersion }}
