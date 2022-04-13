@@ -15,7 +15,7 @@ env:
 
 jobs:
   versionBump:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
       - name: Update Version from Workflow Dispatch
