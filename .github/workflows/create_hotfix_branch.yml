@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 0
 
       - name: Create hotfix branch
-        run: git branch -b release-${{ github.event.inputs.hotfixVersion }} v${{ github.event.inputs.previousVersion }}
+        run: git checkout -b release-${{ github.event.inputs.hotfixVersion }} v${{ github.event.inputs.previousVersion }}
 
       - name: Update version
         run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
