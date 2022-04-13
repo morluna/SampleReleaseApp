@@ -52,7 +52,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
           branch: release-${{ github.event.inputs.hotfixVersion }}
           
       - name: Trigger version bump on develop
