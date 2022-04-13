@@ -37,10 +37,10 @@ jobs:
           fetch-depth: 0
 
       - name: Create hotfix branch
-        run: git branch release-${{ github.event.inputs.hotfixVersion }} v${{ github.event.inputs.previousVersion }}
+        run: git branch -b release-${{ github.event.inputs.hotfixVersion }} v${{ github.event.inputs.previousVersion }}
 
       - name: Update version
-        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' client.xcodeproj/project.pbxproj 
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.hotfixVersion }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
       
       - name: Cherry pick commit
         run: git cherry-pick ${{ github.event.inputs.commitHash }} release-${{ github.event.inputs.hotfixVersion }}
