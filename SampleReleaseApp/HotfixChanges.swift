@@ -11,4 +11,5 @@ enum HotfixChanges {
     case ten
     case eleven
     case twelve
+    case thirteen
 }
