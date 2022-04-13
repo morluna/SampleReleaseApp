@@ -1,0 +1,39 @@
+name: Version Bump
+
+on: 
+  repository_dispatch:
+    types: [hotfix_version_bump]
+    
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to Use'
+        required: true
+env:
+  LC_ALL: en_US.UTF-8
+  LANG: en_US.UTF-8
+
+jobs:
+  versionBump:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update Version from Workflow Dispatch
+        if: ${{ github.event.inputs.version }}
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.inputs.version }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
+        
+      - name: Update Version from Repository Dispatch
+        if: ${{ github.event.client_payload.message.nextVersionNumber }}
+        run: sed -i '' -e 's/MARKETING_VERSION \= [^\;]*\;/MARKETING_VERSION = ${{ github.event.client_payload.message.nextVersionNumber }};/' SampleReleaseApp.xcodeproj/project.pbxproj 
+      
+      # Create a pull request
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with: 
+          commit-message: "Updated version to ${{ github.event.inputs.version }} "
+          branch: "${{ github.event.inputs.version }}-version-bump"
+          title: "Automated - ${{ github.event.inputs.version }} Version Bump"
+          body: "This is an automated branch. Check out and resolve any conflicts if needed."
+          labels: "Automated"
+          delete-branch: true
+          token: ${{ secrets.MARCOS_SECRET_ACCESS_TOKEN }}
