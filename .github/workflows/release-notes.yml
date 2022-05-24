@@ -22,7 +22,7 @@ jobs:
           echo ::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES
 
       - name: Echo 
-        run: echo ```${{ steps.release_notes_job.outputs.RELEASE_NOTES }}```
+        run: echo ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
 
 #       - name: Post to Slack
 #         uses: rtCamp/action-slack-notify@v2
