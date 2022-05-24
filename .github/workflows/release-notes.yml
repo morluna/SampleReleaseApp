@@ -19,7 +19,7 @@ jobs:
         id: release_notes_job
         run: |
           RAW_RELEASE_NOTES=$(cat temp_release_notes/release_file.md)
-          echo "::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES"
+          echo ::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES
 
       - name: Echo 
         run: echo ${{ steps.release_notes_job.outputs.RELEASE_NOTES }}
