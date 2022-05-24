@@ -24,10 +24,10 @@ jobs:
       - name: Echo 
         run: echo "```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```"
 
-      - name: Post to Slack
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
-          SLACK_TITLE: "Release Notes"
+#       - name: Post to Slack
+#         uses: rtCamp/action-slack-notify@v2
+#         env:
+#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#           SLACK_MESSAGE: ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
+#           SLACK_TITLE: "Release Notes"
       
