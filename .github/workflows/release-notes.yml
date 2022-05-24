@@ -19,15 +19,15 @@ jobs:
         id: release_notes_job
         run: |
           RAW_RELEASE_NOTES=$(cat temp_release_notes/release_file.md)
-          echo '::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES'
+          echo "::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES"
 
       - name: Echo 
-        run: echo "```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```"
+        run: echo ${{ steps.release_notes_job.outputs.RELEASE_NOTES }}
 
-#       - name: Post to Slack
-#         uses: rtCamp/action-slack-notify@v2
-#         env:
-#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#           SLACK_MESSAGE: ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
-#           SLACK_TITLE: "Release Notes"
+      - name: Post to Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
+          SLACK_TITLE: "Release Notes"
       
