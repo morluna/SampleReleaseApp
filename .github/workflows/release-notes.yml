@@ -26,6 +26,7 @@ jobs:
         id: release_notes_job
         uses: okcredit/changelog-creator-action@main
         with:
+          configuration: "configuration.json"
           token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Output Release Notes and Create File
