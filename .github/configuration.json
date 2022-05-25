@@ -18,6 +18,6 @@
   ],
   "sort": "DESC",
   "template": "Merged PRs\n${{UNCATEGORIZED}}",
-  "pr_template": "- ${{TITLE}}\n #${{URL}}",
+  "pr_template": "- ${{TITLE}} #${{URL}}",
   "empty_template": "- no changes"
 }
