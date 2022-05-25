@@ -31,10 +31,7 @@ jobs:
           
       - name: Output Release Notes and Create File
         run: |
-          echo ::set-output name=RELEASE_NOTES::\`\`\`\\n\${{steps.release_notes_job.outputs.changelog}}\n\`\`\`
-          
-          echo "${{steps.release_notes_job.outputs.changelog}}" >> release_file.md
-          
+          cat ${{steps.release_notes_job.outputs.changelog}} > release_file.md
           
       - name: Create Draft Release
         uses: actions/create-release@v1
