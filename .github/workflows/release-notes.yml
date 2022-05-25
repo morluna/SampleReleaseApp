@@ -25,7 +25,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Release Notes
-          path: temp_release_notes/.
+          path: temp_release_notes/release_file.md
 
       # - name: Post to Slack
       #   uses: rtCamp/action-slack-notify@v2
