@@ -31,10 +31,7 @@ jobs:
           
       - name: Output Release Notes and Create File
         run: |
-          RAW_RELEASE_NOTES="${{steps.release_notes_job.outputs.changelog}}"
-          FORMATTED_NOTES=\`\`\`\\n\$RAW_RELEASE_NOTES\n\`\`\`
-          
-          echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
+          echo ::set-output name=RELEASE_NOTES::\`\`\`\\n\${{steps.release_notes_job.outputs.changelog}}\n\`\`\`
           
           echo "${{steps.release_notes_job.outputs.changelog}}" >> release_file.md
           
