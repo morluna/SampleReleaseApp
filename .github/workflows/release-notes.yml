@@ -34,7 +34,7 @@ jobs:
           
           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
           
-          mkdir -p temp_release_notes & echo ${{steps.github_release.outputs.changelog}} >> temp_release_notes/release_file.md
+          mkdir -p temp_release_notes & touch temp_release_notes/release_file.md & echo ${{steps.github_release.outputs.changelog}} >> temp_release_notes/release_file.md
           
           
       - name: Create Draft Release
