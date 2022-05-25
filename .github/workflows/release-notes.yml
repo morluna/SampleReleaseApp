@@ -22,13 +22,15 @@ jobs:
           FORMATTED_NOTES=\`\`\`\\n$COMPLETED_NOTES\\n\`\`\`
           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
 
-      - name: Echo 
-        run: echo ${{ steps.release_notes_job.outputs.RELEASE_NOTES }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Release Notes
+          path: temp_release_notes/.
 
-#       - name: Post to Slack
-#         uses: rtCamp/action-slack-notify@v2
-#         env:
-#           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#           SLACK_MESSAGE: ```\n${{ steps.release_notes_job.outputs.RELEASE_NOTES }}\n```
-#           SLACK_TITLE: "Release Notes"
+      # - name: Post to Slack
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_MESSAGE: ${{ steps.release_notes_job.outputs.RELEASE_NOTES }}
+      #     SLACK_TITLE: "Release Notes"
       
