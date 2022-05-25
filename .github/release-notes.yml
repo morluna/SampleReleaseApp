@@ -1,4 +1,4 @@
 changelog:
   contributors:
     exclude:
-      names: ["dependabot"]
+      names: *
