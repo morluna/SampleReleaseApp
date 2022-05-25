@@ -9,18 +9,40 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+#       - name: Create Release Notes
+#         uses: docker://decathlon/release-notes-generator-action:2.0.1
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           OUTPUT_FOLDER: temp_release_notes
+
+#       - name: Output Release Notes
+#         id: release_notes_job
+#         run: |
+#           COMPLETED_NOTES=$(cat temp_release_notes/release_file.md)
+#           FORMATTED_NOTES=\`\`\`\\n$COMPLETED_NOTES\\n\`\`\`
+#           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
+
       - name: Create Release Notes
-        uses: docker://decathlon/release-notes-generator-action:2.0.1
+        id: release_notes_job
+        uses: okcredit/changelog-creator-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Output Release Notes and Create File
+        run: |
+          FORMATTED_NOTES=\`\`\`\\n${{steps.github_release.outputs.changelog}}\\n\`\`\`
+          echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
+          echo ${{steps.github_release.outputs.changelog}} | tee temp_release_notes/release_file.md
+          
+          
+      - name: Create Draft Release
+        uses: actions/create-release@v1
+        with:
+          draft: true
+          release_name: ${{ steps.github_release.outputs.milestone }}
+          body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT_FOLDER: temp_release_notes
-
-      - name: Output Release Notes
-        id: release_notes_job
-        run: |
-          COMPLETED_NOTES=$(cat temp_release_notes/release_file.md)
-          FORMATTED_NOTES=\`\`\`\\n$COMPLETED_NOTES\\n\`\`\`
-          echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
 
       - uses: actions/upload-artifact@v3
         with:
