@@ -31,8 +31,10 @@ jobs:
       - name: Output Release Notes and Create File
         run: |
           FORMATTED_NOTES=\`\`\`\\n${{steps.github_release.outputs.changelog}}\\n\`\`\`
+          
           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
-          echo ${{steps.github_release.outputs.changelog}} | tee temp_release_notes/release_file.md
+          
+          mkdir -p temp_release_notes & echo ${{steps.github_release.outputs.changelog}} >> temp_release_notes/release_file.md
           
           
       - name: Create Draft Release
