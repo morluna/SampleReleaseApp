@@ -24,7 +24,7 @@ jobs:
 
       - name: Create Release Notes
         id: release_notes_job
-        uses: okcredit/changelog-creator-action@master
+        uses: okcredit/changelog-creator-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           
