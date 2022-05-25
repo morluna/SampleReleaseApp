@@ -1,7 +1,4 @@
 changelog:
-  sections:
-  - title: "Merged PRs"
-    labels: ["*"]
   contributors:
     exclude:
       names: ["*"]
