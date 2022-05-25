@@ -34,7 +34,7 @@ jobs:
           
           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
           
-          echo ${{steps.release_notes_job.outputs.changelog}} >> release_file.md
+          echo "${{steps.release_notes_job.outputs.changelog}}" >> release_file.md
           
           
       - name: Create Draft Release
