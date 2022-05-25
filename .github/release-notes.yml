@@ -1,7 +1,7 @@
 changelog:
   sections:
   - title: "Merged PRs"
-    labels: *
+    labels: [*]
   contributors:
     exclude:
-      names: *
+      names: [*]
