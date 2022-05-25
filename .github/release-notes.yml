@@ -1,5 +1,5 @@
 changelog:
   contributors:
+    title: "Awesome Contributors"
     exclude:
-      title: "Awesome Contributors"
       names: ["*"]
