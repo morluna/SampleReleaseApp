@@ -30,7 +30,7 @@ jobs:
           
       - name: Output Release Notes and Create File
         run: |
-          FORMATTED_NOTES=\`\`\`\\n${{steps.github_release.outputs.changelog}}\\n\`\`\`
+          FORMATTED_NOTES=\`\`\`\\n${{steps.release_notes_job.outputs.changelog}}\\n\`\`\`
           
           echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
           
@@ -41,8 +41,9 @@ jobs:
         uses: actions/create-release@v1
         with:
           draft: true
-          release_name: ${{ steps.github_release.outputs.milestone }}
-          body: ${{steps.github_release.outputs.changelog}}
+          tag_name: ${{ steps.release_notes_job.outputs.milestone }}
+          release_name: ${{ steps.release_notes_job.outputs.milestone }}
+          body: ${{steps.release_notes_job.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
