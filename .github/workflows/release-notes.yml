@@ -18,11 +18,12 @@ jobs:
       - name: Output Release Notes
         id: release_notes_job
         run: |
-          RAW_RELEASE_NOTES=$(cat temp_release_notes/release_file.md)
-          echo ::set-output name=RELEASE_NOTES::$RAW_RELEASE_NOTES
+          COMPLETED_NOTES=$(cat temp_release_notes/release_file.md)
+          FORMATTED_NOTES=\`\`\`\\n$COMPLETED_NOTES\\n\`\`\`
+          echo ::set-output name=RELEASE_NOTES::$FORMATTED_NOTES
 
       - name: Echo 
-        run: echo ```\n ${{ steps.release_notes_job.outputs.RELEASE_NOTES }} \n```
+        run: echo ${{ steps.release_notes_job.outputs.RELEASE_NOTES }}
 
 #       - name: Post to Slack
 #         uses: rtCamp/action-slack-notify@v2
